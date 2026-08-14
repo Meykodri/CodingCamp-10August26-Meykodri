@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===== GREETING & CLOCK ===== -->
+  <header class="hero">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light/dark mode" title="Toggle theme">🌙</button>
+    <div class="hero-inner">
+      <p id="clock" class="clock">00:00:00</p>
+      <p id="date" class="date"></p>
+      <h1 id="greeting" class="greeting">Good morning!</h1>
+    </div>
+  </header>
+
+  <main class="dashboard">
+
+    <!-- ===== FOCUS TIMER ===== -->
+    <section class="card" id="timer-section">
+      <h2 class="card-title">Focus Timer</h2>
+      <div class="timer-display" id="timer-display">25:00</div>
+      <div class="timer-controls">
+        <button id="btn-start" class="btn btn-primary">Start</button>
+        <button id="btn-stop" class="btn btn-secondary">Stop</button>
+        <button id="btn-reset" class="btn btn-ghost">Reset</button>
+      </div>
+      <p class="timer-label" id="timer-label">Ready to focus?</p>
+      <div class="timer-custom">
+        <label for="timer-minutes" class="timer-custom-label">Set duration (min)</label>
+        <input
+          type="number"
+          id="timer-minutes"
+          class="timer-minutes-input"
+          value="25"
+          min="1"
+          max="120"
+          aria-label="Set timer duration in minutes"
+        />
+        <button id="btn-set-time" class="btn btn-ghost btn-sm">Set</button>
+      </div>
+    </section>
+
+    <!-- ===== TO-DO LIST ===== -->
+    <section class="card" id="todo-section">
+      <h2 class="card-title">To-Do List</h2>
+      <form id="todo-form" class="todo-form" autocomplete="off">
+        <input
+          type="text"
+          id="todo-input"
+          class="todo-input"
+          placeholder="Add a new task…"
+          maxlength="120"
+        />
+        <button type="submit" class="btn btn-primary">Add</button>
+      </form>
+      <div class="todo-toolbar">
+        <label for="sort-select" class="sort-label">Sort:</label>
+        <select id="sort-select" class="sort-select" aria-label="Sort tasks">
+          <option value="added">Date added</option>
+          <option value="alpha">A → Z</option>
+          <option value="alpha-desc">Z → A</option>
+          <option value="done">Done last</option>
+        </select>
+      </div>
+      <ul id="todo-list" class="todo-list"></ul>
+      <p id="todo-empty" class="empty-hint">No tasks yet. Add one above!</p>
+    </section>
+
+    <!-- ===== QUICK LINKS ===== -->
+    <section class="card" id="links-section">
+      <h2 class="card-title">Quick Links</h2>
+      <form id="link-form" class="link-form" autocomplete="off">
+        <input
+          type="text"
+          id="link-name"
+          class="todo-input"
+          placeholder="Label (e.g. GitHub)"
+          maxlength="40"
+        />
+        <input
+          type="url"
+          id="link-url"
+          class="todo-input"
+          placeholder="https://…"
+          maxlength="200"
+        />
+        <button type="submit" class="btn btn-primary">Add</button>
+      </form>
+      <div id="links-grid" class="links-grid"></div>
+      <p id="links-empty" class="empty-hint">No links yet. Add one above!</p>
+    </section>
+
+  </main>
+
+  <!-- ===== EDIT TASK MODAL ===== -->
+  <div id="edit-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+    <div class="modal">
+      <h3 id="modal-title">Edit Task</h3>
+      <input type="text" id="edit-input" class="todo-input" maxlength="120" />
+      <div class="modal-actions">
+        <button id="edit-save" class="btn btn-primary">Save</button>
+        <button id="edit-cancel" class="btn btn-ghost">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
